@@ -1,0 +1,56 @@
+openapi: "3.0.3"
+info:
+  title: Food Facts API
+  description: REST API fuer den Zugriff auf Lebensmitteldaten der Open Food Facts Datenbank
+  version: "1.0.0"
+
+servers:
+  - url: http://localhost:8080
+    description: Lokaler Entwicklungsserver
+
+paths:
+  /api/products/{barcode}:
+    get:
+      summary: Produkt per Barcode abrufen
+      description: Ruft die vollstaendigen Produktdaten anhand des EAN/UPC Barcodes ab.
+      parameters:
+        - name: barcode
+          in: path
+          required: true
+          description: EAN/UPC Barcode des Produkts
+          schema:
+            type: string
+          example: "3017620422003"
+      responses:
+        "200":
+          description: Produkt gefunden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "404":
+          description: Produkt nicht gefunden
+
+components:
+  schemas:
+    Product:
+      type: object
+      description: Lebensmittelprodukt aus der Open Food Facts Datenbank
+      properties:
+        code:
+          type: string
+          description: EAN/UPC Barcode
+          example: "3017620422003"
+        product_name:
+          type: string
+          description: Produktname
+          example: "Nutella"
+        brands:
+          type: string
+          description: Marke / Hersteller
+          example: "Ferrero"
+        nutriscore_grade:
+          type: string
+          description: Nutri-Score Bewertung (A bis E)
+          enum: [a, b, c, d, e]
+          example: "e"
