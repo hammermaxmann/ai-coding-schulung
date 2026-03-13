@@ -1,4 +1,4 @@
-# Use Case 3: Refactoring der God Class
+# Use Case 4: Refactoring der God Class
 
 **Schwierigkeit:** Mittel | **Dauer:** ~20 Minuten | **IDE:** Eclipse
 

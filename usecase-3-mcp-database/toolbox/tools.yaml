@@ -1,0 +1,111 @@
+sources:
+  foodfacts-db:
+    kind: postgres
+    host: 127.0.0.1
+    port: 5432
+    database: foodfacts
+    user: workshop
+    password: workshop
+
+tools:
+  list_products:
+    kind: postgres-sql
+    source: foodfacts-db
+    description: Alle Produkte mit Basisinformationen auflisten.
+    statement: |
+      SELECT p.barcode, p.produkt_name, p.marke, p.menge, p.nutri_score, p.nova_gruppe
+      FROM produkte p
+      ORDER BY p.produkt_name;
+
+  get_product_by_barcode:
+    kind: postgres-sql
+    source: foodfacts-db
+    description: Ein Produkt anhand seines Barcodes suchen. Gibt alle Produktdetails zurueck.
+    parameters:
+      - name: barcode
+        type: string
+        description: Der EAN/UPC Barcode des Produkts (z.B. "3017620422003" fuer Nutella).
+    statement: |
+      SELECT p.*, n.kcal, n.fett, n.zucker, n.salz, n.eiweiss
+      FROM produkte p
+      LEFT JOIN naehrwerte n ON p.barcode = n.produkt_barcode
+      WHERE p.barcode = $1;
+
+  search_products:
+    kind: postgres-sql
+    source: foodfacts-db
+    description: Produkte anhand eines Suchbegriffs finden. Durchsucht Name und Marke.
+    parameters:
+      - name: query
+        type: string
+        description: Der Suchbegriff (z.B. "Schokolade", "Haribo").
+    statement: |
+      SELECT p.barcode, p.produkt_name, p.marke, p.menge, p.nutri_score
+      FROM produkte p
+      WHERE p.produkt_name ILIKE '%' || $1 || '%'
+         OR p.marke ILIKE '%' || $1 || '%'
+         OR p.produkt_name_de ILIKE '%' || $1 || '%'
+      ORDER BY p.produkt_name;
+
+  get_nutrition:
+    kind: postgres-sql
+    source: foodfacts-db
+    description: Naehrwerte eines Produkts abrufen (pro 100g).
+    parameters:
+      - name: barcode
+        type: string
+        description: Der Barcode des Produkts.
+    statement: |
+      SELECT p.produkt_name, p.marke, n.*
+      FROM naehrwerte n
+      JOIN produkte p ON p.barcode = n.produkt_barcode
+      WHERE n.produkt_barcode = $1;
+
+  get_product_categories:
+    kind: postgres-sql
+    source: foodfacts-db
+    description: Kategorien eines Produkts abrufen.
+    parameters:
+      - name: barcode
+        type: string
+        description: Der Barcode des Produkts.
+    statement: |
+      SELECT p.produkt_name, k.name AS kategorie
+      FROM produkte p
+      JOIN produkt_kategorien pk ON p.id = pk.produkt_id
+      JOIN kategorien k ON pk.kategorie_id = k.id
+      WHERE p.barcode = $1
+      ORDER BY k.name;
+
+  get_products_by_nutriscore:
+    kind: postgres-sql
+    source: foodfacts-db
+    description: Alle Produkte mit einem bestimmten Nutri-Score finden.
+    parameters:
+      - name: score
+        type: string
+        description: Der Nutri-Score (a, b, c, d oder e).
+    statement: |
+      SELECT p.barcode, p.produkt_name, p.marke, p.nutri_score, n.kcal
+      FROM produkte p
+      LEFT JOIN naehrwerte n ON p.barcode = n.produkt_barcode
+      WHERE LOWER(p.nutri_score) = LOWER($1)
+      ORDER BY n.kcal DESC;
+
+  compare_nutrition:
+    kind: postgres-sql
+    source: foodfacts-db
+    description: Naehrwerte zweier Produkte vergleichen.
+    parameters:
+      - name: barcode1
+        type: string
+        description: Barcode des ersten Produkts.
+      - name: barcode2
+        type: string
+        description: Barcode des zweiten Produkts.
+    statement: |
+      SELECT p.produkt_name, p.marke, n.kcal, n.fett, n.zucker, n.salz, n.eiweiss, n.ballaststoffe
+      FROM produkte p
+      JOIN naehrwerte n ON p.barcode = n.produkt_barcode
+      WHERE p.barcode IN ($1, $2)
+      ORDER BY p.produkt_name;
