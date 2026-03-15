@@ -25,7 +25,7 @@ Die Teilnehmer arbeiten mit einem vorbereiteten Java-Projekt, das **absichtlich 
 
 ```bash
 # In das Projektverzeichnis wechseln
-cd ai-coding-workshop/food-facts-service
+cd ai-coding-schulung/food-facts-service
 
 # Projekt kompilieren (prueft ob alles korrekt eingerichtet ist)
 mvn compile
@@ -64,29 +64,32 @@ Produktsuche:
   GET https://world.openfoodfacts.org/cgi/search.pl?search_terms=nutella&json=1&page_size=5
 ```
 
-## Die 3 Use Cases
+## Die 4 Use Cases
 
-| # | Use Case | Schwierigkeit | Dauer | IDE |
-|---|----------|:------------:|:-----:|:---:|
-| 1 | [REST API & OpenAPI Spezifikation](usecase-1-openapi/ANLEITUNG.md) | Leicht | ~20 Min | IntelliJ |
-| 2 | [JUnit Tests erstellen](usecase-2-tests/ANLEITUNG.md) | Leicht | ~20 Min | IntelliJ / Eclipse |
-| 3 | [Refactoring der God Class](usecase-3-refactoring/ANLEITUNG.md) | Mittel | ~20 Min | Eclipse |
+| # | Use Case | Schwierigkeit | IDE |
+|---|----------|:------------:|:---:|
+| 1 | [REST API & OpenAPI Spezifikation](usecase-1-openapi/ANLEITUNG.md) | Leicht | IntelliJ |
+| 2 | [JUnit Tests erstellen](usecase-2-tests/ANLEITUNG.md) | Leicht | IntelliJ / Eclipse |
+| 3 | [MCP Database](usecase-3-mcp-database/ANLEITUNG.md) | Fortgeschritten | IntelliJ / Eclipse |
+| 4 | [Refactoring der God Class](usecase-4-refactoring/ANLEITUNG.md) | Mittel | Eclipse |
 
 ### Empfohlene Reihenfolge
 
 1. **Use Case 1 (OpenAPI)** - Generiert neue Dateien, kein Risiko fuer bestehenden Code. Baut Verstaendnis auf.
 2. **Use Case 2 (Tests)** - Fuegt Tests hinzu, erstellt ein Sicherheitsnetz fuer den naechsten Schritt.
-3. **Use Case 3 (Refactoring)** - Aendert bestehenden Code. Tests aus UC2 koennen das Ergebnis validieren.
+3. **Use Case 3 (MCP Database)** - KI-gestuetzte SQL-Abfragen ueber MCP Server.
+4. **Use Case 4 (Refactoring)** - Aendert bestehenden Code. Tests aus UC2 koennen das Ergebnis validieren.
 
 ## Zeitplan
 
-| Phase | Dauer | Inhalt |
-|-------|:-----:|--------|
-| Einfuehrung | 5 Min | Projekt oeffen, kurze Orientierung |
-| Use Case 1 | 20 Min | REST Controller + OpenAPI Spec |
-| Use Case 2 | 20 Min | JUnit Tests mit Mockito |
-| Use Case 3 | 20 Min | Code-Analyse & Refactoring |
-| Diskussion | 10 Min | Erfahrungen, Fragen, Best Practices |
+| Phase | Inhalt |
+|-------|--------|
+| Einfuehrung | Projekt oeffen, kurze Orientierung |
+| Use Case 1 | REST Controller + OpenAPI Spec |
+| Use Case 2 | JUnit Tests mit Mockito |
+| Use Case 3 | KI-gestuetzte SQL-Abfragen via MCP Server |
+| Use Case 4 | Code-Analyse & Refactoring |
+| Diskussion | Erfahrungen, Fragen, Best Practices |
 
 ## Wichtige Hinweise
 
