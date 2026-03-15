@@ -1,6 +1,25 @@
 # Best Practices: KI-gestuetztes Coding
 
-## Kontext ist alles
+## Den richtigen Modus waehlen
+
+- **Agenten-Modus fuer komplexe Aufgaben** — Agenten (z.B. Claude Code, Cursor Agent, Copilot Agent) koennen selbststaendig mehrere Dateien lesen, editieren und Terminal-Befehle ausfuehren. Ideal fuer Refactoring, Feature-Implementierung oder Debugging ueber mehrere Klassen hinweg.
+- **Chat-Modus fuer gezielte Fragen** — Fuer Code-Erklaerungen, Design-Entscheidungen oder einzelne Methoden reicht der Chat. Weniger Token-Verbrauch, schnellere Antworten.
+- **Inline-Completion fuer Boilerplate** — Tab-Completion (Copilot, Supermaven) eignet sich fuer Getter/Setter, bekannte Patterns und repetitiven Code. Nicht fuer komplexe Logik. Ein Kommentar vor den nächsten Zeilen gibt der Code-Completion ebenfalls mehr Kontext.
+
+### Planungs-Modus vor der Umsetzung
+
+- **Erst planen, dann coden** — Viele Assistenten bieten einen Planungs-Modus (z.B. `/plan` in Copilot/Claude Code, oder Keyword "Plan" im Prompt). Der Assistent analysiert die Aufgabe, liest relevante Dateien und erstellt einen Umsetzungsplan — ohne sofort Code zu aendern.
+- **Komplexe Aufgaben immer mit Plan starten** — Bei Refactorings, neuen Features oder unbekanntem Code: Ein Plan kann einfacher überprüft, gespeichert oder geändert werden als viele Einzelschritte.
+
+## MCP Server nutzen
+
+**Datenbank-Zugriff via MCP** — Ein MCP Server fuer die Datenbank erlaubt dem Assistenten, Schemas zu lesen und SQL direkt auszufuehren. So kann er Queries schreiben, die zum tatsaechlichen Schema passen — statt zu raten.
+
+**Dokumentation via MCP** — Tools wie Context7 liefern aktuelle Library-Dokumentation direkt in den Kontext. Der Assistent arbeitet mit der richtigen API-Version statt mit veraltetem Trainingswissen.
+
+**Eigene Tools bereitstellen** — MCP Server koennen auch projektspezifische Tools anbieten (z.B. Deployment-Status, Testlaeufe). Je mehr der Assistent selbst pruefen kann, desto besser das Ergebnis.
+
+## Kontext gezielt aufbauen
 
 - **agents.md / CLAUDE.md anlegen** — Eine kurze Datei im Projekt-Root, die Techstack, Konventionen und Projektstruktur beschreibt. Wenige Zeilen reichen. So versteht der Assistent das Projekt sofort, ohne dass ihr es jedes Mal erklaeren muesst.
 - **Relevante Dateien oeffnen** — Der Assistent arbeitet besser, wenn er die betroffenen Klassen, Interfaces und Tests sieht. Oeffnet vor dem Prompt die 2-3 wichtigsten Dateien.
