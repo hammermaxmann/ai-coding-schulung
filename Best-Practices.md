@@ -36,3 +36,38 @@
 - **Generiertes Review wie fremden Code** — Nie blind uebernehmen. Prueft Logik, Sicherheit und Lesbarkeit.
 - **Tests zuerst generieren** — Tests vor dem Refactoring erstellen. So habt ihr ein Sicherheitsnetz, das Regressionen sofort aufdeckt.
 - **Keine Secrets committen** — API-Keys, Tokens und Passwoerter gehoeren in Umgebungsvariablen oder `.env`-Dateien (mit `.gitignore`), nie in den Code.
+
+## MCP Server konfigurieren
+
+MCP Server werden **nicht** im Projekt-Verzeichnis konfiguriert — die Konfiguration ist tool- und IDE-spezifisch:
+
+
+| Tool                    | Konfigurationspfad                                         | Root-Key       |
+| ----------------------- | ---------------------------------------------------------- | -------------- |
+| **Copilot in IntelliJ** | `~/.config/github-copilot/intellij/mcp.json`               | `"servers"`    |
+| **Copilot CLI**         | `~/.copilot/mcp-config.json`                               | `"mcpServers"` |
+| **VS Code**             | `~/.vscode/mcp.json` oder projekt-lokal `.vscode/mcp.json` | `"mcpServers"` |
+| **Claude Code**         | `~/.claude/mcp.json` oder projekt-lokal `.claude/mcp.json` | `"mcpServers"` |
+
+> **Hinweis:** Das Copilot-Plugin in IntelliJ und die Copilot CLI unterstuetzen aktuell keine projekt-lokalen MCP-Konfigurationen. Die `mcp.json` muss im jeweiligen globalen Pfad im Home-Verzeichnis abgelegt werden.
+
+### Beispiel (IntelliJ / Copilot)
+
+```json
+{
+  "servers": {
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "food-facts-db": {
+      "type": "local",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres",
+               "postgresql://workshop:workshop@127.0.0.1:5432/foodfacts"]
+    }
+  }
+}
+```
+
+Eine Beispiel-Konfiguration liegt im Projekt-Root unter `mcp.example.json` — diese kann als Vorlage in den jeweiligen Konfigurationspfad kopiert werden.

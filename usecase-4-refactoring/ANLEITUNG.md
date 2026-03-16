@@ -1,7 +1,5 @@
 # Use Case 4: Refactoring der God Class
 
-**Schwierigkeit:** Mittel | **Dauer:** ~20 Minuten | **IDE:** Eclipse
-
 ## Lernziele
 
 - KI nutzen, um komplexen Code zu verstehen und zu erklaeren
@@ -11,7 +9,7 @@
 
 ## Szenario
 
-`Product.java` ist eine **250+ Zeilen "God Class"** mit 25+ Feldern, die verschiedenste
+`Product.java` ist eine **250+ Zeilen "God Class"** mit ~50 Feldern, die verschiedenste
 Verantwortlichkeiten vermischt: Stammdaten, Naehrwerte, Allergene, Bewertungen, Bilder, Metadaten.
 Zusaetzlich gibt es ein **nahezu identisches Duplikat** in `ProductDetailDto.java`.
 
@@ -19,7 +17,7 @@ Eure Aufgabe: Lasst die KI den Code analysieren und schrittweise refaktorisieren
 
 ## Relevante Dateien
 
-Oeffnet diese Dateien in Eclipse:
+Öffnet diese Dateien in IntelliJ:
 
 - `src/main/java/com/workshop/foodfacts/model/Product.java` - **Die God Class**
 - `src/main/java/com/workshop/foodfacts/dto/ProductDetailDto.java` - **Das Duplikat**
@@ -62,7 +60,7 @@ Vergleiche Product.java und ProductDetailDto.java Zeile fuer Zeile.
 - Welche Felder sind identisch?
 - Welche Felder fehlen in ProductDetailDto?
 - Gibt es einen guten Grund fuer die Existenz beider Klassen?
-- Schlage eine Loesung vor, um die Duplikation zu beseitigen.
+- Schlage eine Lösung vor, um die Duplikation zu beseitigen.
 ```
 
 ---
@@ -106,8 +104,6 @@ eigene Datei NutrientLevels.java im Paket com.workshop.foodfacts.model.
 Product.java soll weiterhin auf NutrientLevels verweisen.
 Stelle sicher, dass die JSON-Serialisierung identisch bleibt.
 ```
-
-> **Tipp fuer Eclipse:** Nach dem Extrahieren `Ctrl+Shift+O` druecken fuer "Organize Imports"
 
 ### Prompt 5 - Naehrwerte extrahieren:
 

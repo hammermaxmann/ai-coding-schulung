@@ -8,7 +8,7 @@ Das Projekt ist ein Client fuer die **Open Food Facts API** - eine kostenlose, o
 Die Teilnehmer arbeiten mit einem vorbereiteten Java-Projekt, das **absichtlich typische Probleme** aus gewachsenen Codebases enthaelt:
 - Keine Tests
 - Keine REST-API / OpenAPI-Dokumentation
-- Eine ueberladene "God Class" mit 25+ Feldern
+- Eine ueberladene "God Class" mit ~50 Feldern
 - Duplizierter Code zwischen Klassen
 
 ## Voraussetzungen
@@ -17,7 +17,7 @@ Die Teilnehmer arbeiten mit einem vorbereiteten Java-Projekt, das **absichtlich 
 |-----|---------|
 | **JDK** | Java 17 oder hoeher |
 | **Build-Tool** | Maven 3.8+ |
-| **IDE** | IntelliJ IDEA oder Eclipse |
+| **IDE** | IntelliJ IDEA |
 | **KI-Plugin** | GitHub Copilot, Cursor, oder vergleichbar |
 | **Internet** | Fuer Open Food Facts API-Zugriff |
 
@@ -32,7 +32,6 @@ mvn compile
 
 # Optional: Projekt in der IDE oeffnen
 # IntelliJ: File > Open > food-facts-service/pom.xml > "Open as Project"
-# Eclipse: File > Import > Maven > Existing Maven Projects
 ```
 
 ## Das Projekt: Food Facts Service
@@ -42,7 +41,7 @@ Ein Java-Client fuer die [Open Food Facts API](https://world.openfoodfacts.org/)
 | Paket | Klasse | Beschreibung |
 |-------|--------|-------------|
 | `client` | `OpenFoodFactsClient` | HTTP-Client fuer die externe API |
-| `model` | `Product` | Produktdaten (25+ Felder) |
+| `model` | `Product` | Produktdaten (~50 Felder) |
 | `model` | `SearchRequest` | Suchparameter |
 | `model` | `SearchResponse` | Suchergebnis mit Paginierung |
 | `service` | `ProductService` | Produktzugriff, Caching, Mapping |
@@ -69,9 +68,9 @@ Produktsuche:
 | # | Use Case | Schwierigkeit | IDE |
 |---|----------|:------------:|:---:|
 | 1 | [REST API & OpenAPI Spezifikation](usecase-1-openapi/ANLEITUNG.md) | Leicht | IntelliJ |
-| 2 | [JUnit Tests erstellen](usecase-2-tests/ANLEITUNG.md) | Leicht | IntelliJ / Eclipse |
-| 3 | [MCP Database](usecase-3-mcp-database/ANLEITUNG.md) | Fortgeschritten | IntelliJ / Eclipse |
-| 4 | [Refactoring der God Class](usecase-4-refactoring/ANLEITUNG.md) | Mittel | Eclipse |
+| 2 | [JUnit Tests erstellen](usecase-2-tests/ANLEITUNG.md) | Leicht | IntelliJ |
+| 3 | [MCP Database](usecase-3-mcp-database/ANLEITUNG.md) | Fortgeschritten | IntelliJ |
+| 4 | [Refactoring der God Class](usecase-4-refactoring/ANLEITUNG.md) | Mittel | IntelliJ |
 
 ### Empfohlene Reihenfolge
 

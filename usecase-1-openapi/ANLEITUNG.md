@@ -1,7 +1,5 @@
 # Use Case 1: REST API & OpenAPI Spezifikation generieren
 
-**Schwierigkeit:** Leicht | **Dauer:** ~20 Minuten | **IDE:** IntelliJ
-
 ## Lernziele
 
 - KI nutzen, um neuen Code (REST Controller) zu generieren
@@ -19,7 +17,7 @@ Oeffnet diese Dateien in der IDE, damit der KI-Assistent sie als Kontext nutzen 
 
 - `src/main/java/com/workshop/foodfacts/service/ProductService.java` - Produktzugriff
 - `src/main/java/com/workshop/foodfacts/service/NutritionService.java` - Naehrwert-Analyse
-- `src/main/java/com/workshop/foodfacts/model/Product.java` - Produktmodell (25+ Felder)
+- `src/main/java/com/workshop/foodfacts/model/Product.java` - Produktmodell (~50 Felder)
 - `src/main/java/com/workshop/foodfacts/model/SearchResponse.java` - Suchergebnis
 - `src/main/java/com/workshop/foodfacts/dto/NutritionSummaryDto.java` - Naehrwert-DTO
 

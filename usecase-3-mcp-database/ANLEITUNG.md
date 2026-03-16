@@ -1,15 +1,13 @@
-# Use Case 3: Datenbank-Zugriff mit MCP-Server (Fortgeschritten)
+# Use Case 3: Datenbank-Zugriff mit MCP-Server
 
 ## Ziel
 
 In diesem Use Case lernt ihr, wie ein AI-Coding-Assistent direkt auf eine SQL-Datenbank zugreifen kann. Dazu verwenden wir eine PostgreSQL-Datenbank mit Lebensmitteldaten und den **Google GenAI Toolbox** als MCP-Server (Model Context Protocol).
 
-**Dauer:** ca. 25 Minuten
-
 ## Voraussetzungen
 
 - Docker Desktop installiert und gestartet
-- VS Code mit GitHub Copilot Extension
+- IntelliJ IDEA mit GitHub Copilot Plugin
 - Terminal / Kommandozeile
 
 ---
@@ -64,21 +62,15 @@ Keine Installation noetig - wird automatisch beim Start geladen.
 brew install mcp-toolbox
 ```
 
-### 2.2 MCP-Server in VS Code konfigurieren
+### 2.2 MCP-Server in IntelliJ konfigurieren
 
-Die Konfiguration ist bereits in `.vscode/mcp.json` im Projekt-Root vorbereitet. Oeffnet das Projekt in VS Code:
+Die MCP-Konfiguration muss in den Copilot-Einstellungen hinterlegt werden. Oeffnet das Projekt in IntelliJ und konfiguriert den MCP-Server unter `Settings > Tools > GitHub Copilot > MCP Servers`.
 
-```bash
-code /pfad/zu/ai-coding-workshop
-```
-
-VS Code erkennt die MCP-Konfiguration automatisch. Ihr solltet in den Copilot-Chat-Einstellungen den Server `food-facts-db` sehen.
-
-> **Hinweis:** Falls der MCP-Server nicht automatisch erkannt wird, oeffnet die Command Palette (`Cmd+Shift+P`) und sucht nach "MCP: List Servers".
+> **Hinweis:** Falls der MCP-Server nicht automatisch erkannt wird, IntelliJ neustarten und die Copilot-Einstellungen pruefen.
 
 ### 2.3 Verbindung testen
 
-Oeffnet den Copilot Chat (`Cmd+I` oder Chat-Panel) und fragt:
+Oeffnet den Copilot Chat in IntelliJ und fragt:
 
 ```
 Welche Tabellen gibt es in der foodfacts-Datenbank?
@@ -197,5 +189,5 @@ docker compose down -v
 |---------|---------|
 | `docker compose up` schlaegt fehl | Ist Docker Desktop gestartet? |
 | Port 5432 belegt | `docker compose down` und erneut starten, oder Port in docker-compose.yml aendern |
-| MCP-Server wird nicht erkannt | VS Code neustarten, `.vscode/mcp.json` pruefen |
-| Copilot fuehrt keine SQL aus | MCP-Server-Status pruefen: Command Palette → "MCP: List Servers" |
+| MCP-Server wird nicht erkannt | IntelliJ neustarten, MCP-Server-Konfiguration in Copilot-Einstellungen pruefen |
+| Copilot fuehrt keine SQL aus | MCP-Server-Status in den Copilot-Einstellungen pruefen |

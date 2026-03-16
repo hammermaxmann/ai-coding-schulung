@@ -1,20 +1,11 @@
 {
-  "mcpServers": {
+  "servers": {
     "context7": {
       "type": "http",
       "url": "https://mcp.context7.com/mcp"
     },
-    "github": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-github"
-      ],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_GITHUB_TOKEN>"
-      }
-    },
     "food-facts-db": {
+      "type": "local",
       "command": "npx",
       "args": [
         "-y",
@@ -23,6 +14,7 @@
       ]
     },
     "mermaid": {
+      "type": "local",
       "command": "npx",
       "args": [
         "-y",

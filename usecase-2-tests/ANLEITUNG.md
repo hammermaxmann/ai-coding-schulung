@@ -1,7 +1,5 @@
 # Use Case 2: JUnit Tests mit KI-Unterstuetzung erstellen
 
-**Schwierigkeit:** Leicht | **Dauer:** ~20 Minuten | **IDE:** IntelliJ oder Eclipse
-
 ## Lernziele
 
 - KI fuer die Generierung von Unit-Tests einsetzen
@@ -25,8 +23,6 @@ mkdir -p src/test/java/com/workshop/foodfacts
 
 In IntelliJ: Rechtsklick auf `src` > `New` > `Directory` > `test/java/com/workshop/foodfacts`
 
-In Eclipse: Rechtsklick auf Projekt > `New` > `Source Folder` > `src/test/java`
-
 ---
 
 ## Schritt 1: Zielklasse auswaehlen (2 Min)
@@ -35,7 +31,7 @@ Oeffnet diese Dateien in der IDE:
 
 **Fuer DTO-Tests:**
 
-- `src/main/java/com/workshop/foodfacts/model/Product.java` - Komplex, 25+ Felder, Jackson-Annotationen
+- `src/main/java/com/workshop/foodfacts/model/Product.java` - Komplex, ~50 Felder, Jackson-Annotationen
 
 **Fuer Logik-Tests:**
 
